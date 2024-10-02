@@ -1,5 +1,6 @@
 import tkinter as tk
 import logging
+from bitmex import get_contracts
 
 logger = logging.getLogger()
 
@@ -19,9 +20,15 @@ logger.addHandler(stream_handler)
 logger.addHandler(file_handler)
 
 
-logger.info('This is logged in all cases')
 
-if __name__ == "__app__":
-    logger.info('This is logged only if we execute the app.py file')
+if __name__ == "__main__":
+    bitmex_contracts = get_contracts()
+
     root = tk.Tk()
+
+    for contract in bitmex_contracts:
+        label_widget = tk.Label(root, text=contract)
+        label_widget.pack(side=tk.TOP)
+
+
     root.mainloop() 

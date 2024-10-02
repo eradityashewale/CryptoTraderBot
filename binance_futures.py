@@ -15,4 +15,3 @@ def get_contracts():
         contracts.append(contract['pair'])
     return contracts
 
-print(get_contracts()) 
